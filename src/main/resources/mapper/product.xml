@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.heypli.productsvc.mapper.ProductMapper">
+    
+    <insert id="insertProd" parameterType="ProductInfoRequest">
+        INSERT INTO ProductInfo
+            (prodName, prodDesc, rgstDate)
+        VALUES(#{prodName}, #{prodDesc}, current_timestamp());
+    </insert>
+
+    <select id="selectProdList" parameterType="ProductInfoRequest" resultType="ProductInfoResponse">
+        SELECT *
+        FROM ProductInfo
+        WHERE 1=1
+        <if test="null != prodId">
+          AND  prodId = #{prodId}
+        </if>
+    </select>
+
+    <select id="selectProdInfo" parameterType="ProductInfoRequest" resultType="ProductInfoResponse">
+        SELECT *
+        FROM ProductInfo
+        WHERE prodId = #{prodId}
+    </select>
+    
+</mapper>
