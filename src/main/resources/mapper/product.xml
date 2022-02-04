@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.heypli.productsvc.mapper.ProductMapper">
-    
+
     <insert id="insertProd" parameterType="ProductInfoRequest">
         INSERT INTO ProductInfo
             (prodName, prodDesc, rgstDate)
@@ -23,5 +23,5 @@
         FROM ProductInfo
         WHERE prodId = #{prodId}
     </select>
-    
+
 </mapper>

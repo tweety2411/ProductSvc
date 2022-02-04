@@ -28,7 +28,7 @@ dependencies {
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
     implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
-    compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
 
     /* DB */

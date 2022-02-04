@@ -7,6 +7,7 @@ import com.heypli.productsvc.domain.request.ProductInfoRequest;
 import com.heypli.productsvc.domain.response.ProductInfoResponse;
 import com.heypli.productsvc.exception.ProductNotFoundException;
 import com.heypli.productsvc.service.ProductService;
+import com.heypli.productsvc.service.impl.TestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Random;
 
 @Slf4j
 @RestController
@@ -23,13 +25,13 @@ import javax.validation.Valid;
 public class ProductController {
 
     private final ProductService productService;
+    private final TestService testService;
 
     @GetMapping("/test")
-    public String test(@RequestParam(required = false)String id) {
-        if(id.equals("ex")) {
-            throw new ProductNotFoundException();
-        }
-        return "test";
+    public String test(@RequestParam(required = false)String id) throws InterruptedException {
+        int randomNo = new Random().nextInt();
+        String result = randomNo % 2 == 0? testService.test(): testService.fail();
+        return result;
     }
 
     /**
